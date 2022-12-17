@@ -1,0 +1,41 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false,
+  "stylelintplus.filetypes": ["scss"],
+  "stylelintplus.autoFixOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vimwiki",
+    "markdown",
+    "sass",
+    "scss",
+    "css",
+    "htmldjango",
+    "html"
+  ],
+  "emmet.includeLanguages": {
+    "htmldjango": "html",
+    "njk": "html",
+    "nunjucks": "html",
+    "html": "njk"
+  }
+}
