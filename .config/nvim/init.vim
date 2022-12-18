@@ -12,7 +12,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'nvim-lua/plenary.nvim'
 
 " colorscheme
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " css3 syntax highlight
 Plug 'hail2u/vim-css3-syntax'

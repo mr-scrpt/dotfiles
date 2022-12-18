@@ -6,15 +6,16 @@
 #installation via script from github
 #export ZSH="/home/$USER/.oh-my-zsh"
 #installation via paru -S oh-my-zsh-git
+export TERM=screen-256color
 export ZSH=/usr/share/oh-my-zsh/
-
 export BROWSER=google-chrome-stable
 source /usr/share/nvm/init-nvm.sh
 
-
 alias v=nvim
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
+alias tmux="TERM=screen-256color tmux"
+alias tdev='~/.config/tmux/tmux-dev'
+alias tconf='~/.config/tmux/tmux-config'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -83,7 +84,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 if [ -f $ZSH/oh-my-zsh.sh ]; then
   source $ZSH/oh-my-zsh.sh
