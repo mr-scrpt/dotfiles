@@ -1,0 +1,8 @@
+#!/bin/sh
+cd ~/.config/
+tmux new -s 'config' -d 'nvim'
+tmux rename-window 'config'
+tmux new-window;
+tmux rename-window 'terminal'
+tmux select-window -t 1
+tmux -2 attach-session -d
