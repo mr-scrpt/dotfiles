@@ -16,6 +16,8 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias tmux="TERM=screen-256color tmux"
 alias tdev='~/.config/tmux/tmux-dev'
 alias tconf='~/.config/tmux/tmux-config'
+alias hs='~/Hubstaff/HubstaffClient.bin.x86_64'
+alias rr='ranger'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -99,8 +101,8 @@ fi
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
 # else
+#   export EDITOR='vim'
 #   export EDITOR='mvim'
 # fi
 
