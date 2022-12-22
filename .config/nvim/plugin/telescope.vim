@@ -5,7 +5,12 @@ lua << EOF
 
   require('telescope').setup{
     defaults = {
-      file_ignore_patterns = {"node_modules"}
+      file_ignore_patterns = {"node_modules"},
+      mappings = {
+        n = {
+          ['<leader>c'] = require('telescope.actions').delete_buffer
+        }
+      }
     },
     extensions = {
       file_browser = {
@@ -35,4 +40,4 @@ nnoremap <C-g> <cmd>Telescope buffers<cr>
 nnoremap <leader>q <cmd>Telescope file_browser<cr>
 nnoremap <leader>f <cmd>Telescope file_browser path=%:p:h<cr>
 
-nnoremap <leader>c <cmd>:bd<cr>
+" nnoremap <leader>c <cmd>:bd<cr>
