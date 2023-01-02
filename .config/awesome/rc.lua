@@ -122,11 +122,11 @@ local modkey1      = "Control"
 -- personal variables
 --change these variables if you want
 local browser1          = "google-chrome-stable"
-local browser2          = "firefox"
+local browser2          = "google-chrome-stable"
 local browser3          = "chromium -no-default-browser-check"
 local editor            = os.getenv("nvim") or "nvim"
 local editorgui         = "atom"
-local filemanager       = "nautilus"
+local filemanager       = "dolphin"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
 local terminal          = "alacritty"
