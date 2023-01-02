@@ -5,7 +5,9 @@
 # Path to your oh-my-zsh installation.
 #installation via script from github
 #export ZSH="/home/$USER/.oh-my-zsh"
+#
 #installation via paru -S oh-my-zsh-git
+
 export TERM=screen-256color
 export ZSH=/usr/share/oh-my-zsh/
 export BROWSER=google-chrome-stable
@@ -18,6 +20,7 @@ alias tdev='~/.config/tmux/tmux-dev'
 alias tconf='~/.config/tmux/tmux-config'
 alias hs='~/Hubstaff/HubstaffClient.bin.x86_64'
 alias rr='ranger'
+alias lff='tmux split -h lf; lf'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
