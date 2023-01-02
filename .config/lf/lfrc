@@ -5,7 +5,17 @@ set ignorecase true
 set icons
 set sortby ctime
 set reverse!
+
+# set nopreview
+# set ratios 1
+# set info size:time
 # Custom Functions
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+
 cmd mkdir ${{
   printf "Directory Name: "
   read ans
@@ -30,9 +40,9 @@ cmd openFolderWithVim ${{
 
 # cmd setwallpaper %cp "$f" ~/.config/wall.jpg && xwallpaper --zoom "$f"
 
-/* cmd trash ${{ */
-/*   trash-put "$f" */
-/* }} */
+# /* cmd trash ${{ */
+# /*   trash-put "$f" */
+# /* }} */
 
 # Archive bindings
 cmd unarchive ${{
@@ -90,15 +100,7 @@ map md mkdir
 # map bg setwallpaper
 map C clear
 
-map dd trash
-map dr restore_trash
-
-# Movement
-map gD cd ~/documents
-map gd cd ~/downloads
-map gc cd ~/.config
-map gp cd ~/project
-map gt cd ~/.local/share/Trash/files
+map dd tras
 
 
 # Open
