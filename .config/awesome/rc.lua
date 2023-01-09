@@ -331,8 +331,8 @@ globalkeys = my_table.join(
     {description = "show dmenu", group = "hotkeys"}),
 
     -- Function keys
-    awful.key({ }, "F12", function () awful.util.spawn( "xfce4-terminal --drop-down" ) end,
-        {description = "dropdown terminal" , group = "function keys"}),
+    -- awful.key({ }, "F12", function () awful.util.spawn( "xfce4-terminal --drop-down" ) end,
+    --     {description = "dropdown terminal" , group = "function keys"}),
 
 
     -- super + ... function keys
@@ -948,6 +948,23 @@ awful.rules.rules = {
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = false } },
+
+    { rule = { class = "Geany" },
+     properties = { maximized = false, floating = false } },
+
+
+    { rule = { class = "Shutter" },
+     properties = { maximized = false, floating = true } },
+
+
+    { rule = { class = "vlc" },
+     properties = { maximized = false, floating = true } },
+
+
+    { rule = { class = "Dragon-drop" },
+     properties = { maximized = false, floating = true, placement = awful.placement.centered} },
+
+
           -- Set applications to always map on the tag 2 on screen 1.
     --{ rule = { class = "Subl" },
         --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
@@ -1006,8 +1023,6 @@ awful.rules.rules = {
     { rule = { class = editorgui },
           properties = { maximized = true } },
 
-    { rule = { class = "Geany" },
-          properties = { maximized = false, floating = false } },
 
     -- { rule = { class = "Thunar" },
     --     properties = { maximized = false, floating = false } },

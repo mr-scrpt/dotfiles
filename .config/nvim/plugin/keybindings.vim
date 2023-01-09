@@ -4,7 +4,7 @@ nmap <Leader>s :write<Enter>
 nmap <Leader>l :CocCommand stylelintplus.applyAutoFixes<Enter>
 
 " Escape form insern mode from jk key press
-inoremap jk <esc>
+" inoremap jk <esc>
 
 " greatest remap ever
 " xnoremap("<leader>p", "\"_dP")
@@ -92,12 +92,11 @@ nnoremap <esc> :noh<return><esc>
 
 
 " scroll screen remap
-nnoremap <S-k> <c-u>
-nnoremap <S-j> <c-d>
+" nnoremap <S-k> <c-u>
+" nnoremap <S-j> <c-d>
 
-
-
-
+nnoremap <S-k> <C-u>zz
+nnoremap <S-j> <C-d>zz
 
 
 noremap <A-O> O<ESC>

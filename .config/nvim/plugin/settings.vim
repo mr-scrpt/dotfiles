@@ -202,6 +202,9 @@ syntax on
 " make indentation based on filetype
 filetype plugin indent on
 
+
+
+" Highlight active buffer
 " Dim inactive windows using 'colorcolumn' setting
 " This tends to slow down redrawing, but is very useful.
 " Based on https://groups.google.com/d/msg/vim_use/IJU-Vk-QLJE/xz4hjPjCRBUJ
