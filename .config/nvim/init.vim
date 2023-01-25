@@ -18,8 +18,8 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'hail2u/vim-css3-syntax'
 
 " lsp
-" Plug 'bmatcuk/stylelint-lsp'
-" Plug 'neovim/nvim-lspconfig'
+Plug 'bmatcuk/stylelint-lsp'
+Plug 'neovim/nvim-lspconfig'
 " highlight colors
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
@@ -27,7 +27,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'groenewege/vim-less'
 
 " Elixir syntax highlight
-" Plug 'elixir-editors/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 
 " Shakespeare (Yesod templating)
 " Plug 'pbrisbin/vim-syntax-shakespeare'
@@ -88,7 +88,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 " Typescript autocomplete
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'iamcco/coc-vimlsp', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-stylelint' , {'do': 'yarn install --frozen-lockfile'}
 " Plug 'bmatcuk/coc-stylelintplus', {'do': 'yarn install --frozen-lockfile'}
@@ -130,5 +131,7 @@ Plug 'tpope/vim-surround'
 Plug 'digitaltoad/vim-pug'
 
 Plug 'christoomey/vim-tmux-navigator'
+
+
 
 call plug#end()

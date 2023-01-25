@@ -69,7 +69,6 @@
 
 [
  (predefined_type)
- (void_keyword)
 ] @type.builtin
 
 (implicit_type) @keyword
@@ -276,9 +275,11 @@
  "|="
  "~"
  ">>"
+ ">>>"
  "<<"
  "<<="
  ">>="
+ ">>>="
  "=>"
 ] @operator
 
@@ -317,7 +318,6 @@
  "with"
  "new"
  "typeof"
- "nameof"
  "sizeof"
  "is"
  "and"

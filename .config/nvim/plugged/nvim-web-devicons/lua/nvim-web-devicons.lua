@@ -153,6 +153,12 @@ local icons = {
     cterm_color = "59",
     name = "GitCommit",
   },
+  ["Containerfile"] = {
+    icon = "",
+    color = "#384d54",
+    cterm_color = "59",
+    name = "Dockerfile",
+  },
   ["COPYING"] = {
     icon = "",
     color = "#cbcb41",
@@ -602,6 +608,12 @@ local icons = {
     cterm_color = "199",
     name = "GraphQL"
   },
+  ["gql"] = {
+    icon = "",
+    color = "#e535ab",
+    cterm_color = "199",
+    name = "GraphQL"
+  },
   ["gruntfile"] = {
     icon = "",
     color = "#e37933",
@@ -972,10 +984,22 @@ local icons = {
     name = "Procfile",
   },
   ["ps1"] = {
-    icon = "",
-    color = "#4d5a5e",
-    cterm_color = "59",
-    name = "PromptPs1",
+    icon = "󰨊",
+    color = "#4273ca",
+    cterm_color = "69",
+    name = "PsScriptfile",
+  },
+  ["psd1"] = {
+    icon = "󰨊",
+    color = "#6975c4",
+    cterm_color = "105",
+    name = "PsManifestfile",
+  },
+  ["psm1"] = {
+    icon = "󰨊",
+    color = "#6975c4",
+    cterm_color = "105",
+    name = "PsScriptModulefile",
   },
   ["psb"] = {
     icon = "",
@@ -1476,6 +1500,7 @@ local filetypes = {
   ["go"] = "go",
   ["godot"] = "godot",
   ["graphql"] = "graphql",
+  ["gql"] = "gql",
   ["gruntfile"] = "gruntfile",
   ["gulpfile"] = "gulpfile",
   ["haml"] = "haml",
@@ -1529,6 +1554,8 @@ local filetypes = {
   ["procfile"] = "Procfile",
   ["prolog"] = "pro",
   ["ps1"] = "ps1",
+  ["psd1"] = "psd1",
+  ["psm1"] = "psm1",
   ["psb"] = "psb",
   ["psd"] = "psd",
   ["puppet"] = "pp",
@@ -1698,6 +1725,10 @@ local function setup(opts)
   })
 end
 
+local function get_default_icon()
+  return default_icon
+end
+
 local function get_icon(name, ext, opts)
   ext = ext or name:match("^.*%.(.*)$") or ""
   if not loaded then
@@ -1796,6 +1827,7 @@ return {
   get_icon_cterm_color_by_filetype = get_icon_cterm_color_by_filetype,
   set_icon = set_icon,
   set_default_icon = set_default_icon,
+  get_default_icon = get_default_icon,
   setup = setup,
   has_loaded = function()
     return loaded

@@ -8,7 +8,6 @@ local filetype_to_parsername = {
   PKGBUILD = "bash",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
-  terraform = "hcl",
   ["html.handlebars"] = "glimmer",
   systemverilog = "verilog",
   cls = "latex",
@@ -16,8 +15,11 @@ local filetype_to_parsername = {
   OpenFOAM = "foam",
   pandoc = "markdown",
   rmd = "markdown",
+  quarto = "markdown",
   cs = "c_sharp",
   tape = "vhs",
+  dosini = "ini",
+  confini = "ini",
 }
 
 ---@class InstallInfo
@@ -60,6 +62,16 @@ local list = setmetatable({}, {
   end,
 })
 
+list.ada = {
+  install_info = {
+    url = "https://github.com/briot/tree-sitter-ada",
+    branch = "master",
+    files = { "src/parser.c" },
+  },
+  filetype = "ada",
+  maintainers = { "@briot" },
+}
+
 list.agda = {
   install_info = {
     url = "https://github.com/AusCyberman/tree-sitter-agda",
@@ -87,7 +99,7 @@ list.qmljs = {
     branch = "master",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  filetype = "qmljs",
+  filetype = "qml",
   maintainers = { "@Decodetalkers" },
 }
 
@@ -231,6 +243,15 @@ list.rust = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@vigoux" },
+}
+
+list.fsh = {
+  install_info = {
+    url = "https://github.com/mgramigna/tree-sitter-fsh",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@mgramigna" },
 }
 
 list.fusion = {
@@ -591,6 +612,15 @@ list.slint = {
   experimental = true,
 }
 
+list.smali = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-smali",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+  experimental = true,
+}
+
 list.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
@@ -606,6 +636,17 @@ list.hcl = {
   },
   maintainers = { "@MichaHoffmann" },
   filetype = "hcl",
+}
+
+list.terraform = {
+  install_info = {
+    url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
+    location = "dialects/terraform",
+  },
+  maintainers = { "@MichaHoffmann" },
+  filetype = "terraform",
 }
 
 list.markdown = {
@@ -694,6 +735,7 @@ list.elm = {
     url = "https://github.com/elm-tooling/tree-sitter-elm",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  maintainers = { "@zweimach" },
 }
 
 list.yaml = {
@@ -1154,13 +1196,30 @@ list.astro = {
   maintainers = { "@virchau13" },
 }
 
+list.capnp = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-capnp",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.wgsl = {
   install_info = {
     url = "https://github.com/szebniok/tree-sitter-wgsl",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@szebniok" },
   filetype = "wgsl",
+}
+
+list.wgsl_bevy = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-wgsl-bevy",
+    files = { "src/parser.c", "src/scanner.c" },
+    generate_requires_npm = true,
+  },
+  maintainers = { "@theHamsta" },
 }
 
 list.m68k = {
@@ -1194,6 +1253,14 @@ list.v = {
   maintainers = { "@kkharji" },
 }
 
+list.thrift = {
+  install_info = {
+    url = "https://github.com/duskmoon314/tree-sitter-thrift",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq", "@duskmoon314" },
+}
+
 list.tiger = {
   install_info = {
     url = "https://github.com/ambroisie/tree-sitter-tiger",
@@ -1204,6 +1271,19 @@ list.tiger = {
   },
   filetype = "tiger",
   maintainers = { "@ambroisie" },
+}
+
+list.t32 = {
+  install_info = {
+    url = "https://codeberg.org/xasc/tree-sitter-t32",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+    revision = "675cd7de4eb80f2faa1e6d3bc9ee195fa9ef9790",
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = "t32",
+  maintainers = { "@xasc" },
 }
 
 list.sxhkdrc = {
@@ -1344,6 +1424,25 @@ list.ebnf = {
   experimental = true,
 }
 
+list.htmldjango = {
+  install_info = {
+    url = "https://github.com/interdependence/tree-sitter-htmldjango",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@ObserverOfTime" },
+  experimental = true,
+}
+
+list.ini = {
+  install_info = {
+    url = "https://github.com/justinmk/tree-sitter-ini",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@theHamsta" },
+  experimental = true,
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
@@ -1354,7 +1453,7 @@ function M.ft_to_lang(ft)
   if result then
     return result
   else
-    ft = vim.split(ft, ".", true)[1]
+    ft = vim.split(ft, ".", { plain = true })[1]
     return filetype_to_parsername[ft] or ft
   end
 end

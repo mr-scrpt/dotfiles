@@ -55,10 +55,11 @@ local fb_picker = {}
 ---@field path string: dir to browse files from, `vim.fn.expanded` automatically (default: vim.loop.cwd())
 ---@field cwd string: dir to browse folders from, `vim.fn.expanded` automatically (default: vim.loop.cwd())
 ---@field cwd_to_path boolean: whether folder browser is launched from `path` rather than `cwd` (default: false)
----@field grouped boolean: group initial sorting by directories and then files; uses plenary.scandir (default: false)
+---@field grouped boolean: group initial sorting by directories and then files (default: false)
 ---@field files boolean: start in file (true) or folder (false) browser (default: true)
 ---@field add_dirs boolean: whether the file browser shows folders (default: true)
 ---@field depth number: file tree depth to display, `false` for unlimited depth (default: 1)
+---@field auto_depth boolean|number: unlimit or set `depth` to `auto_depth` & unset grouped on prompt for file_browser
 ---@field select_buffer boolean: select current buffer if possible; may imply `hidden=true` (default: false)
 ---@field hidden boolean: determines whether to show hidden files or not (default: false)
 ---@field respect_gitignore boolean: induces slow-down w/ plenary finder (default: false, true if `fd` available)
@@ -71,6 +72,7 @@ local fb_picker = {}
 ---@field dir_icon_hl string: change the highlight group of dir icon (default: "Default")
 ---@field display_stat boolean|table: ordered stat; see above notes, (default: `{ date = true, size = true }`)
 ---@field hijack_netrw boolean: use telescope file browser when opening directory paths; must be set on `setup` (default: false)
+---@field use_fd boolean: use `fd` if available over `plenary.scandir` (default: true)
 fb_picker.file_browser = function(opts)
   opts = opts or {}
 
@@ -86,6 +88,7 @@ fb_picker.file_browser = function(opts)
   opts.display_stat = vim.F.if_nil(opts.display_stat, { date = true, size = true })
   opts.custom_prompt_title = opts.prompt_title ~= nil
   opts.custom_results_title = opts.results_title ~= nil
+  opts.use_fd = vim.F.if_nil(opts.use_fd, true)
 
   local select_buffer = opts.select_buffer and opts.files
   -- handle case that current buffer is a hidden file

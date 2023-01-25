@@ -1,9 +1,4 @@
 {
-  "css.validate": false,
-  "less.validate": false,
-  "scss.validate": false,
-  "wxss.validate": false,
-  "stylelintplus.filetypes": ["scss"],
   "stylelintplus.autoFixOnSave": true,
   "eslint.autoFixOnSave": true,
   "eslint.validate": [
@@ -18,20 +13,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "coc.preferences.formatOnSaveFiletypes": [
-    "json",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vimwiki",
-    "markdown",
-    "sass",
-    "scss",
-    "css",
-    "htmldjango",
-    "html"
-  ],
+  "coc.preferences.formatOnSave": true,
   "emmet.includeLanguages": {
     "htmldjango": "html",
     "njk": "html",

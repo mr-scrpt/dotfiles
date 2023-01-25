@@ -1,7 +1,6 @@
 local ls = require("luasnip")
 local cache = require("luasnip.loaders._caches").vscode
 local util = require("luasnip.util.util")
-local str_util = require("luasnip.util.str")
 local loader_util = require("luasnip.loaders.util")
 local Path = require("luasnip.util.path")
 local sp = require("luasnip.nodes.snippetProxy")
@@ -205,7 +204,10 @@ local function get_snippet_files(opts)
 		paths = opts.paths
 	end
 	paths = vim.tbl_map(Path.expand, paths) -- Expand before deduping, fake paths will become nil
-	paths = util.deduplicate(paths) -- Remove doppelgänger paths and ditch nil ones
+	paths = vim.tbl_filter(function(v)
+		return v
+	end, paths) -- ditch nil
+	paths = util.deduplicate(paths) -- Remove doppelgänger paths
 
 	local ft_paths = {}
 

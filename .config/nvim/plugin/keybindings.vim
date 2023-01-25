@@ -95,6 +95,8 @@ nnoremap <esc> :noh<return><esc>
 " nnoremap <S-k> <c-u>
 " nnoremap <S-j> <c-d>
 
+vnoremap <S-k> <C-u>zz
+vnoremap <S-j> <C-d>zz
 nnoremap <S-k> <C-u>zz
 nnoremap <S-j> <C-d>zz
 

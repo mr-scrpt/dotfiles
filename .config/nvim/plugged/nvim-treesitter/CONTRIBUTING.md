@@ -2,9 +2,8 @@
 
 First of all, thank you very much for contributing to `nvim-treesitter`.
 
-If you haven't already, you should really come and reach out to us on our [Zulip]
-server, so we can help you with any question you might have!
-There is also a [Matrix channel] for tree-sitter support in Neovim.
+If you haven't already, you should really come and reach out to us on our
+[Matrix channel], so we can help you with any question you might have!
 
 As you know, `nvim-treesitter` is roughly split in two parts:
 
@@ -37,10 +36,10 @@ Thus far, there is basically two types of modules:
 - Bigger modules (like `completion-treesitter`, or `nvim-tree-docs`), or modules that integrate
   with other plugins, that we call `remote modules`.
 
-In any case, you can build your own module ! To help you started in the process, we have a template
+In any case, you can build your own module! To help you started in the process, we have a template
 repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
 Feel free to use it, and contact us over on our
-[Zulip] or on the "Neovim tree-sitter" [Matrix channel].
+on the "Neovim tree-sitter" [Matrix channel].
 
 ## Parser configurations
 
@@ -58,7 +57,7 @@ For now these are the types of queries used by `nvim-treesitter`:
 - `injections.scm`: used to define injections.
 
 For these types there is a *norm* you will have to follow so that features work fine.
-Here are some global advices :
+Here are some global advices:
 
 - If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
   you can install the [playground plugin](https://github.com/nvim-treesitter/playground).
@@ -140,32 +139,33 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Keywords
 
 ```scheme
-@keyword          ; various keywords
-@keyword.function ; keywords that define a function (e.g. `func` in Go, `def` in Python)
-@keyword.operator ; operators that are English words (e.g. `and` / `or`)
-@keyword.return   ; keywords like `return` and `yield`
+@keyword             ; various keywords
+@keyword.function    ; keywords that define a function (e.g. `func` in Go, `def` in Python)
+@keyword.operator    ; operators that are English words (e.g. `and` / `or`)
+@keyword.return      ; keywords like `return` and `yield`
 
-@conditional      ; keywords related to conditionals (e.g. `if` / `else`)
-@conditional.ternary ; Ternary operator: condition ? 1 : 2
-@repeat           ; keywords related to loops (e.g. `for` / `while`)
-@debug            ; keywords related to debugging
-@label            ; GOTO and other labels (e.g. `label:` in C)
-@include          ; keywords for including modules (e.g. `import` / `from` in Python)
-@exception        ; keywords related to exceptions (e.g. `throw` / `catch`)
+@conditional         ; keywords related to conditionals (e.g. `if` / `else`)
+@conditional.ternary ; ternary operator (e.g. `?` / `:`)
+
+@repeat              ; keywords related to loops (e.g. `for` / `while`)
+@debug               ; keywords related to debugging
+@label               ; GOTO and other labels (e.g. `label:` in C)
+@include             ; keywords for including modules (e.g. `import` / `from` in Python)
+@exception           ; keywords related to exceptions (e.g. `throw` / `catch`)
 ```
 
 #### Types
 
 ```scheme
-@type                  ; type or class definitions and annotations
-@type.builtin          ; built-in types
-@type.definition       ; type definitions (e.g. `typedef` in C)
-@type.qualifier        ; type qualifiers (e.g. `const`)
+@type            ; type or class definitions and annotations
+@type.builtin    ; built-in types
+@type.definition ; type definitions (e.g. `typedef` in C)
+@type.qualifier  ; type qualifiers (e.g. `const`)
 
-@storageclass          ; visibility/life-time modifiers
-@attribute             ; attribute annotations (e.g. Python decorators)
-@field                 ; object and struct fields
-@property              ; similar to `@field`
+@storageclass    ; modifiers that affect storage in memory or life-time
+@attribute       ; attribute annotations (e.g. Python decorators)
+@field           ; object and struct fields
+@property        ; similar to `@field`
 ```
 
 #### Identifiers
@@ -174,9 +174,9 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @variable         ; various variable names
 @variable.builtin ; built-in variable names (e.g. `this`)
 
-@constant          ; constant identifiers
-@constant.builtin  ; built-in constant values
-@constant.macro    ; constants defined by the preprocessor
+@constant         ; constant identifiers
+@constant.builtin ; built-in constant values
+@constant.macro   ; constants defined by the preprocessor
 
 @namespace        ; modules or namespaces
 @symbol           ; symbols or atoms
@@ -193,7 +193,8 @@ Mainly for markup languages.
 @text.underline        ; underlined text
 @text.strike           ; strikethrough text
 @text.title            ; text that is part of a title
-@text.literal          ; literal or verbatim text
+@text.literal          ; literal or verbatim text (e.g., inline code)
+@text.quote            ; text quotations
 @text.uri              ; URIs (e.g. hyperlinks)
 @text.math             ; math environments (e.g. `$ ... $` in LaTeX)
 @text.environment      ; text environments of markup languages
@@ -260,7 +261,7 @@ Used for XML-like tags.
 
 You can set the scope of a definition by setting the `scope` property on the definition.
 
-For example, a javascript function declaration creates a scope. The function name is captured as the definition.
+For example, a JavaScript function declaration creates a scope. The function name is captured as the definition.
 This means that the function definition would only be available WITHIN the scope of the function, which is not the case.
 The definition can be used in the scope the function was defined in.
 
@@ -322,5 +323,4 @@ the node describing the language and `@content` to describe the injection region
 @zero_indent    ; sets this node at position 0 (no indent)
 ```
 
-[Zulip]: https://nvim-treesitter.zulipchat.com
 [Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org

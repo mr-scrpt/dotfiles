@@ -1,4 +1,3 @@
-local snip_mod = require("luasnip.nodes.snippet")
 local util = require("luasnip.util.util")
 local session = require("luasnip.session")
 local snippet_collection = require("luasnip.session.snippet_collection")
@@ -53,7 +52,7 @@ local function get_snippets(ft, opts)
 	return snippet_collection.get_snippets(ft, opts.type or "snippets") or {}
 end
 
-local function get_context(snip)
+local function default_snip_info(snip)
 	return {
 		name = snip.name,
 		trigger = snip.trigger,
@@ -63,19 +62,21 @@ local function get_context(snip)
 	}
 end
 
-local function available()
+local function available(snip_info)
+	snip_info = snip_info or default_snip_info
+
 	local fts = util.get_snippet_filetypes()
 	local res = {}
 	for _, ft in ipairs(fts) do
 		res[ft] = {}
 		for _, snip in ipairs(get_snippets(ft)) do
 			if not snip.invalidated then
-				table.insert(res[ft], get_context(snip))
+				table.insert(res[ft], snip_info(snip))
 			end
 		end
 		for _, snip in ipairs(get_snippets(ft, { type = "autosnippets" })) do
 			if not snip.invalidated then
-				table.insert(res[ft], get_context(snip))
+				table.insert(res[ft], snip_info(snip))
 			end
 		end
 	end
@@ -638,7 +639,12 @@ local function refresh_notify(ft)
 end
 
 local function setup_snip_env()
-	setfenv(2, vim.tbl_extend("force", _G, session.config.snip_env))
+	local combined_table = vim.tbl_extend("force", _G, session.config.snip_env)
+	-- TODO: if desired, take into account _G's __index before looking into
+	-- snip_env's __index.
+	setmetatable(combined_table, getmetatable(session.config.snip_env))
+
+	setfenv(2, combined_table)
 end
 local function get_snip_env()
 	return session.config.snip_env
@@ -683,7 +689,33 @@ local function clean_invalidated(opts)
 	snippet_collection.clean_invalidated(opts)
 end
 
-ls = {
+-- make these lazy, such that we don't have to load them before it's really
+-- necessary (drives up cost of initial load, otherwise).
+-- stylua: ignore
+local ls_lazy = {
+	s = function() return require("luasnip.nodes.snippet").S end,
+	sn = function() return require("luasnip.nodes.snippet").SN end,
+	t = function() return require("luasnip.nodes.textNode").T end,
+	f = function() return require("luasnip.nodes.functionNode").F end,
+	i = function() return require("luasnip.nodes.insertNode").I end,
+	c = function() return require("luasnip.nodes.choiceNode").C end,
+	d = function() return require("luasnip.nodes.dynamicNode").D end,
+	r = function() return require("luasnip.nodes.restoreNode").R end,
+	snippet = function() return require("luasnip.nodes.snippet").S end,
+	snippet_node = function() return require("luasnip.nodes.snippet").SN end,
+	parent_indexer = function() return require("luasnip.nodes.snippet").P end,
+	indent_snippet_node = function() return require("luasnip.nodes.snippet").ISN end,
+	text_node = function() return require("luasnip.nodes.textNode").T end,
+	function_node = function() return require("luasnip.nodes.functionNode").F end,
+	insert_node = function() return require("luasnip.nodes.insertNode").I end,
+	choice_node = function() return require("luasnip.nodes.choiceNode").C end,
+	dynamic_node = function() return require("luasnip.nodes.dynamicNode").D end,
+	restore_node = function() return require("luasnip.nodes.restoreNode").R end,
+	parser = function() return require("luasnip.util.parser") end,
+	config = function() return require("luasnip.config") end,
+}
+
+ls = util.lazy_table({
 	expand_or_jumpable = expand_or_jumpable,
 	expand_or_locally_jumpable = expand_or_locally_jumpable,
 	locally_jumpable = locally_jumpable,
@@ -718,26 +750,6 @@ ls = {
 	get_snip_env = get_snip_env,
 	clean_invalidated = clean_invalidated,
 	get_snippet_filetypes = util.get_snippet_filetypes,
-	s = snip_mod.S,
-	sn = snip_mod.SN,
-	t = require("luasnip.nodes.textNode").T,
-	f = require("luasnip.nodes.functionNode").F,
-	i = require("luasnip.nodes.insertNode").I,
-	c = require("luasnip.nodes.choiceNode").C,
-	d = require("luasnip.nodes.dynamicNode").D,
-	r = require("luasnip.nodes.restoreNode").R,
-	snippet = snip_mod.S,
-	snippet_node = snip_mod.SN,
-	parent_indexer = snip_mod.P,
-	indent_snippet_node = snip_mod.ISN,
-	text_node = require("luasnip.nodes.textNode").T,
-	function_node = require("luasnip.nodes.functionNode").F,
-	insert_node = require("luasnip.nodes.insertNode").I,
-	choice_node = require("luasnip.nodes.choiceNode").C,
-	dynamic_node = require("luasnip.nodes.dynamicNode").D,
-	restore_node = require("luasnip.nodes.restoreNode").R,
-	parser = require("luasnip.util.parser"),
-	config = require("luasnip.config"),
 	session = session,
 	cleanup = cleanup,
 	refresh_notify = refresh_notify,
@@ -745,6 +757,6 @@ ls = {
 	setup = require("luasnip.config").setup,
 	extend_decorator = extend_decorator,
 	log = require("luasnip.util.log"),
-}
+}, ls_lazy)
 
 return ls

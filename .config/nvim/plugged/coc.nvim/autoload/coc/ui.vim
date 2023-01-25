@@ -124,7 +124,7 @@ function! coc#ui#run_terminal(opts, cb)
   endif
   let opts = {
         \ 'cmd': cmd,
-        \ 'cwd': get(a:opts, 'cwd', getcwd()),
+        \ 'cwd': empty(get(a:opts, 'cwd', '')) ? getcwd() : a:opts['cwd'],
         \ 'keepfocus': get(a:opts, 'keepfocus', 0),
         \ 'Callback': {status, bufnr, content -> a:cb(v:null, {'success': status == 0 ? v:true : v:false, 'bufnr': bufnr, 'content': content})}
         \}
@@ -324,6 +324,10 @@ function! coc#ui#change_lines(bufnr, list) abort
 endfunction
 
 function! coc#ui#open_url(url)
+  if isdirectory(a:url) && $TERM_PROGRAM ==# "iTerm.app"
+    call coc#ui#iterm_open(a:url)
+    return
+  endif
   if !empty(get(g:, 'coc_open_url_command', ''))
     call system(g:coc_open_url_command.' '.a:url)
     return

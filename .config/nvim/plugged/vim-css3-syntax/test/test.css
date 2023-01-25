@@ -3,12 +3,10 @@
 	place-content: auto;
 	place-items: auto;
 	row-gap: auto;
-	gap: auto;
 	display: safe;
 	display: unsafe;
 	display: self-start;
 	display: self-end;
-	display: space-evenly;
 	display: legacy;
 }
 
@@ -85,21 +83,24 @@
 	display: hwb(120deg, 44%, 50%);
 	display: lab(1 2 3);
 	display: lch(4 5 6);
+	display: oklab(1 2 3);
+	display: oklch(4 5 6);
 	display: color(swopc, 0 206 190 77);
-	display: device-cmyk(0, 81%, 81%, 30%);
-	display: relative-colorimetric;
-	display: absolute-colorimetric;
-	display: perceptual;
 	display: accentcolor;
 	display: accentcolortext;
 }
 
-@color-profile swopc {
-	src: url("http://example.org/swop-coated.icc");
+.color-5 {
+	display: device-cmyk(0, 81%, 81%, 30%);
+	display: color-mix(red yellow 65%);
 }
 
-.color-5 {
-	display: color-mix(red yellow 65%);
+@color-profile swopc {
+	src: url("http://example.org/swop-coated.icc");
+	components: auto;
+	display: relative-colorimetric;
+	display: absolute-colorimetric;
+	display: perceptual;
 }
 
 .color-adjust-1 {
@@ -263,9 +264,6 @@
 .display-3 {
 	display: contents;
 	display: run-in;
-	display: ruby;
-	display: ruby-base;
-	display: ruby-text;
 }
 
 .easing-1 {
@@ -324,16 +322,6 @@
 	lighting-color: auto;
 	display: sRGB;
 	display: linearRGB;
-	display: blur(5px);
-	display: brightness(0.4);
-	display: contrast(200%);
-	display: drop-shadow(16px 16px 20px blue);
-	display: grayscale(50%);
-	display: hue-rotate(90deg);
-	display: invert(75%);
-	display: opacity(25%);
-	display: saturate(30%);
-	display: sepia(60%);
 }
 
 .flexbox-1 {
@@ -456,7 +444,6 @@
 }
 
 .html5,
-picture,
 rb,
 rtc,
 slot,
@@ -465,12 +452,9 @@ template {
 }
 
 .images-3 {
-	object-fit: auto;
-	object-position: auto;
 	image-orientation: auto;
 	display: snap;
 	display: flip;
-	display: scale-down;
 	display: from-image;
 	display: pixelated;
 	display: repeating-linear-gradient(to bottom, yellow, blue);
@@ -481,7 +465,6 @@ template {
 	image-resolution: auto;
 	display: image("sprite.svg#xywh=40,0,20,20");
 	display: element(#test);
-	display: conic-gradient(at 25% 30%, white, black 60%);
 }
 
 .inline-3 {
@@ -705,7 +688,6 @@ mask {
 	inset-block: auto;
 	inset-inline: auto;
 	inset: auto;
-	display: sticky;
 }
 
 .properties-values-api-1 {
@@ -714,10 +696,12 @@ mask {
 	initial-value: auto;
 }
 
+.pseudo-4::first-letter::prefix,
+.pseudo-4::first-letter::postfix,
 .pseudo-4::target-text,
 .pseudo-4::spelling-error,
 .pseudo-4::grammer-error,
-.pseudi-4::file-selectors-button {
+.pseudo-4::file-selectors-button {
 	display: auto;
 }
 
@@ -767,10 +751,13 @@ mask {
 	ruby-merge: auto;
 	ruby-align: auto;
 	ruby-overhang: auto;
+	display: ruby;
+	display: ruby-base;
+	display: ruby-text;
 	display: ruby-base-container;
 	display: ruby-text-container;
-	display: merge;
 	display: inter-character;
+	display: merge;
 }
 
 .scoping-1:scope-context div,
@@ -791,6 +778,21 @@ mask {
 
 .scroll-anchoring-1 {
 	overflow-anchor: auto;
+}
+
+.scroll-animations-1 {
+	scroll-timeline-name: auto;
+	scroll-timeline-axis: auto;
+	scroll-timeline: auto;
+	view-timeline-name: auto;
+	view-timeline-axis: auto;
+	view-timeline-inset: auto;
+	view-timeline: auto;
+	animation-range: auto;
+	animation-delay-start: auto;
+	animation-delay-end: auto;
+	display: entry;
+	display: exit;
 }
 
 .scroll-snap-1 {
@@ -830,7 +832,6 @@ mask {
 	scrollbar-width: auto;
 }
 
-.selectors-3:enabled,
 .selectors-3:indeterminate,
 .selectors-3:nth-child(2n+1),
 .selectors-3:nth-last-child(-n+2),
@@ -858,15 +859,12 @@ mask {
 .selectors-4:in-range,
 .selectors-4:out-of-range,
 .selectors-4:user-invalid,
-.selectors-4:is(:hover, :focus),
 .selectors-4:dir(ltr),
 .selectors-4:local-link(0),
 .selectors-4:current(p, li, dt, dd),
 .selectors-4:nth-col(2n+1),
 .selectors-4:nth-last-col(-n+2),
 .selectors-4:target-within,
-.selectors-4:focus-within,
-.selectors-4:focus-visible,
 .selectors-4:playing,
 .selectors-4:paused,
 .selectors-4:has(> img),
@@ -881,7 +879,9 @@ mask {
 .selectors-4:muted,
 .selectors-4:volume-locked,
 .selectors-4:autofill,
-.selectors-4:user-valid {
+.selectors-4:user-valid,
+.selectors-4:open,
+.selectors-4:closed {
 	display: auto;
 }
 
@@ -901,9 +901,7 @@ mask {
 }
 
 .sizing-3 {
-	display: max-content;
-	display: min-content;
-	display: fit-content(10%);
+	display: auto;
 }
 
 .sizing-4 {
@@ -1090,7 +1088,7 @@ view {
 	word-boundary-expansion: auto;
 	display: preserve-breaks;
 	display: preserve-spaces;
-	display: trim-inner;
+	display: discard-inner;
 	display: discard-before;
 	display: discard-after;
 	display: avoid-line;
@@ -1194,7 +1192,6 @@ view {
 }
 
 .values-3 {
-	display: 1ch;
 	display: 1q;
 	display: 1turn;
 }
@@ -1231,7 +1228,6 @@ view {
 	display: min(0, 1);
 	display: max(0, 1);
 	display: clamp(0, 100, 2);
-	display: toggle(italic, normal);
 	display: round(var(--width), 50px);
 	display: mod(-18px, 5px);
 	display: rem(-18px, 5px);
@@ -1254,6 +1250,14 @@ view {
 
 .variables-1 {
 	display: auto;
+}
+
+.view-transitions-1::view-transition,
+.view-transitions-1::view-transition-group(*),
+.view-transitions-1::view-transition-image-pair(*),
+.view-transitions-1::view-transition-old(*),
+.view-transitions-1::view-transition-new(*) {
+	view-transition-name: auto;
 }
 
 .web-animations-1 {

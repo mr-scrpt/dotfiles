@@ -18,7 +18,7 @@ set showcmd
  set cmdheight=1
 
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=100
+set updatetime=50
 
 set lazyredraw
 
@@ -70,11 +70,11 @@ endif
 
 " Indentation
 set autoindent
-" set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set smartindent
+" set smarttab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " Always use spaces insted of tabs
 set expandtab
@@ -88,7 +88,7 @@ set splitright
 " set pumheight=15
 
 " Better search
-set hlsearch
+" set hlsearch
 set incsearch
 
 " Ingore case in search
@@ -101,7 +101,8 @@ set smartcase
 " endif
 
 " Don't wrap lines
-set wrap
+" set wrap
+set nowrap
 " Wrap lines at convenient points
 set linebreak
 " Show line breaks
@@ -142,16 +143,15 @@ set showmatch
 set noshowmode
 
 " Hightlight 80 symbols
-" set colorcolumn=80
+set colorcolumn=80
 
 " Neosnippets conceal marker
 set conceallevel=0
 
 " Start scrolling when we'are 8 lines aways from borders
 set scrolloff=8
-set sidescrolloff=15
-set sidescroll=5
-
+" set sidescrolloff=15
+" set sidescroll=5
 " Live replace with additional buffer
 set inccommand=nosplit
 
@@ -160,7 +160,7 @@ set mouse=a
 
 " Always show column for errors on the left
 set signcolumn=yes
-
+setlocal isfname+=@-@
 " Disable cursor blinking
 set gcr=a:blinkon0
 
