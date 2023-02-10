@@ -12,7 +12,8 @@ export TERM=screen-256color
 export ZSH=/usr/share/oh-my-zsh/
 export BROWSER=google-chrome-stable
 source /usr/share/nvm/init-nvm.sh
-
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local//bin:$PATH
 alias v=nvim
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias tmux="TERM=screen-256color tmux"

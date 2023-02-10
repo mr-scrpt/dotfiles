@@ -17,6 +17,6 @@
     "htmldjango": "html",
     "njk": "html",
     "nunjucks": "html",
-    "_html": "njk"
+    "html": "njk"
   }
 }

@@ -37,21 +37,33 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<C-t>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-function Numbers()
-  vim.cmd [[
+ -- function Numbers()
+ --   vim.cmd [[
+ --       call search('\d\([^0-9\.]\|$\)', 'cW')
+ --       normal v
+ --       call search('\(^\|[^0-9\.]\d\)', 'becW')
+ --     ]]
+ -- end
+
+ -- vim.keymap.set({ 'x' }, 'in', ':<C-u>lua Numbers()<CR>', { noremap = true })
+ -- vim.keymap.set({ 'o' }, 'in', ':normal vin <CR>', { noremap = true })
+--
+vim.cmd [[
+    function! Numbers()
       call search('\d\([^0-9\.]\|$\)', 'cW')
       normal v
       call search('\(^\|[^0-9\.]\d\)', 'becW')
-    ]]
-end
+    endfunction
+    xnoremap in :<C-u>call Numbers()<CR>
+    onoremap in :normal vin<CR>
+]]
+-- iiciniii=.54.
+-- df 458px
 
-vim.keymap.set({ 'x' }, 'in', ':<C-u>lua Numbers()<CR>', { noremap = true })
-vim.keymap.set({ 'o' }, 'in', ':normal vin <CR>', { noremap = true })
 
 
-
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { noremap = true })
-vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { noremap = true })
+vim.keymap.set('n', '<A-j>', ':m .+<CR>==', { noremap = true })
+vim.keymap.set('n', '<A-k>', ':m .-<CR>==', { noremap = true })
 
 
 vim.keymap.set('i', '<A-j>', '<ESC>:m .+1<CR>==gi', { noremap = true })

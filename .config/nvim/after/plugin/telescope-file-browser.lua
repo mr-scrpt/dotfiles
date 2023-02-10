@@ -33,13 +33,13 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
   "n",
-  "<leader>fr",
+  "<leader>fp",
   ":Telescope file_browser<cr>",
   { noremap = true }
 )
 vim.api.nvim_set_keymap(
    "n",
-   "<leader>fb",
+   "<leader>fc",
   ":Telescope file_browser path=%:p:h<cr>",
    { noremap = true }
  )

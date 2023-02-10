@@ -14,8 +14,8 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
   'sumneko_lua',
-  'html',
-  'cssls',
+  -- 'html',
+  -- 'cssls',
   'cssmodules_ls',
 })
 
@@ -41,18 +41,19 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   -- ['gk'] = vim.lsp.buf.hover(),
 
 })
--- cmp_mappings['<Tab>'] = nil
--- cmp_mappings['<S-Tab>'] = nil
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+  mapping = cmp_mappings,
+  sources = {
+    { name = 'emmet_vim' }
+  }
 })
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
     set_lsp_keymaps = false,
     sign_icons = {
-        error = 'E',
-        warn = 'W',
+        error = '☢️',
+        warn = '⚠️',
         hint = 'H',
         info = 'I'
     }
