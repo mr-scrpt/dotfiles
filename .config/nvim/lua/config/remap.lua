@@ -63,8 +63,8 @@ vim.cmd [[
 
 
 vim.keymap.set('n', '<A-j>', ':m .+<CR>==', { noremap = true })
-vim.keymap.set('n', '<A-k>', ':m .-<CR>==', { noremap = true })
 
+vim.keymap.set('n', '<A-k>', ':m .-<CR>==', { noremap = true })
 
 vim.keymap.set('i', '<A-j>', '<ESC>:m .+1<CR>==gi', { noremap = true })
 vim.keymap.set('i', '<A-k>', '<ESC>:m .-2<CR>==gi', { noremap = true })

@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/mr/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ale = {
+    loaded = true,
+    path = "/home/mr/.local/share/nvim/site/pack/packer/start/ale",
+    url = "https://github.com/dense-analysis/ale"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/mr/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -109,10 +114,10 @@ _G.packer_plugins = {
     path = "/home/mr/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["django-plus.vim"] = {
+  ["coc.nvim"] = {
     loaded = true,
-    path = "/home/mr/.local/share/nvim/site/pack/packer/start/django-plus.vim",
-    url = "https://github.com/tweekmonster/django-plus.vim"
+    path = "/home/mr/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
   },
   dracula = {
     config = { "\27LJ\2\na\0\0\3\0\6\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\3\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\24colorscheme dracula\bcmd\bvim\nsetup\fdracula\frequire\0" },

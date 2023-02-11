@@ -44,12 +44,8 @@ return require('packer').startup(function(use)
   use('ThePrimeagen/harpoon')
   use('AndrewRadev/tagalong.vim')
   use('mbbill/undotree')
-  -- use({ 'neoclide/coc.nvim', branch = 'release' })
   use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
   use('nvim-treesitter/playground')
-  use({
-    'tweekmonster/django-plus.vim',
-  })
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -74,9 +70,17 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
+  use('dense-analysis/ale')
+
+  -- use('tweekmonster/django-plus.vim')
+
+  use({ 'neoclide/coc.nvim', branch = 'release' })
+  -- use({ 'yaegassy/coc-htmldjango', run = 'yarn install --frozen-lockfile' })
+
+
+
   -- use({
-  -- 'jackieaskins/cmp-emmet',
-  -- run = 'npm run release'
--- })
-  -- use { "bmatcuk/stylelint-lsp" }
+  --   'prettier/vim-prettier',
+  --   run = 'yarn install --frozen-lockfile --production',
+  -- })
 end)

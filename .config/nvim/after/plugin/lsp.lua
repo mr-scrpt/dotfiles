@@ -1,14 +1,20 @@
 local lsp = require("lsp-zero")
-local nvim_lsp = require('lspconfig')
-nvim_lsp.stylelint_lsp.setup {
-  settings = {
-    stylelintplus = {
-      autoFixOnSave = true,
-      autoFixOnFormat = true,
-      -- other settings...
-    }
-  },
-}
+-- local nvim_lsp = require('lspconfig')
+-- nvim_lsp.stylelint_lsp.setup {
+--   settings = {
+--     stylelintplus = {
+--       autoFixOnSave = true,
+--       autoFixOnFormat = true,
+--       -- other settings...
+--     }
+--   },
+-- }
+-- local nvim_lsp = require('lspconfig')
+-- nvim_lsp.stylelint_lsp.setup {
+--   settings = {
+--   },
+--   filetypes = {"njk", "nunjucks"}
+-- }
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -44,7 +50,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 lsp.setup_nvim_cmp({
   mapping = cmp_mappings,
   sources = {
-    { name = 'emmet_vim' }
+    -- { name = 'emmet_vim' },
+    { name = 'nvim_lsp' }
   }
 })
 
@@ -79,4 +86,3 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
-

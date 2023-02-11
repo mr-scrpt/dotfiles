@@ -124,7 +124,7 @@ vim.opt.gdefault = true
 -- " Set faster redrawing
 vim.opt.ttyfast = true
 
-vim.opt.shell = '$SHELL'
+-- vim.opt.shell = '$SHELL'
 
 -- " Vimdiff should always be vertical
 vim.opt.diffopt:append('vertical')
