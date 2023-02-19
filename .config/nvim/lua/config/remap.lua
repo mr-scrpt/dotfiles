@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
-vim.keymap.set('n', '<leader>s', vim.cmd.write)
+vim.keymap.set('n', '<leader>w', vim.cmd.write)
 vim.keymap.set('n', '<leader>pq', vim.cmd.q)
 vim.keymap.set('n', 'vv', vim.cmd.vs)
 vim.keymap.set('n', 'ss', vim.cmd.split)
@@ -72,3 +72,11 @@ vim.keymap.set('i', '<A-k>', '<ESC>:m .-2<CR>==gi', { noremap = true })
 
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true })
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { noremap = true })
+-- Auto indent pasted text
+vim.keymap.set('n', 'p', 'p=`]<C-o>', {noremap = true})
+vim.keymap.set('n', 'P', 'P=`]<C-o>', {noremap = true})
+
+-- Move to the end of yanked text after yank and paste
+vim.keymap.set('n', 'p', 'p`]', {noremap = true})
+vim.keymap.set('v', 'p', 'p`]', {noremap = true})
+vim.keymap.set('v', 'y', 'y`]', {noremap = true})

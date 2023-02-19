@@ -22,7 +22,7 @@ lsp.ensure_installed({
   'sumneko_lua',
   -- 'html',
   -- 'cssls',
-  'cssmodules_ls',
+  -- 'cssmodules_ls',
 })
 
 -- Fix Undefined global 'vim'

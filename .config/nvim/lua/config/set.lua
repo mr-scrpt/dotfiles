@@ -131,4 +131,7 @@ vim.opt.diffopt:append('vertical')
 
 -- " enable syntax highlight
 vim.opt.syntax = 'on'
-
+-- set iskeyword-=_
+-- vim.opt.iskeyword:append('_')
+vim.opt.iskeyword:remove('_')
+vim.opt.iskeyword:remove('-')

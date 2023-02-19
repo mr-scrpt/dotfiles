@@ -4,6 +4,9 @@ require('telescope').setup{
       mappings = {
         n = {
           ['<leader>c'] = require('telescope.actions').delete_buffer
+        },
+        i = {
+          ["<c-r>"] = "delete_buffer",
         }
       }
     },
@@ -22,6 +25,8 @@ require('telescope').setup{
       }
     }
   }
+
+
 
 require("telescope").load_extension "file_browser"
 require('telescope').load_extension('fzf')
@@ -43,3 +48,25 @@ vim.api.nvim_set_keymap(
   ":Telescope file_browser path=%:p:h<cr>",
    { noremap = true }
  )
+
+-- vim.api.nvim_set_keymap(
+--   "i",
+--   "<c-d>",
+--   ":Telescope delete_buffer",
+--    { noremap = true }
+-- )
+-- require("telescope").setup {
+--   pickers = {
+--     buffers = {
+--       show_all_buffers = true,
+--       sort_lastused = true,
+--       theme = "dropdown",
+--       previewer = false,
+--       mappings = {
+--         i = {
+--           ["<c-d>"] = "delete_buffer",
+--         }
+--       }
+--     }
+--   }
+-- }

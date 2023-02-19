@@ -22,6 +22,11 @@ alias tconf='~/.config/tmux/tmux-config'
 alias hs='~/Hubstaff/HubstaffClient.bin.x86_64'
 alias rr='ranger'
 alias lff='tmux split -h lf; lf'
+LFCD="$GOPATH/src/github.com/gokcehan/lf/etc/lfcd.sh"  # source
+LFCD="/home/mr/.config/lf/lfcd.sh"                                #  pre-built binary, make sure to use absolute path
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+fi
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

@@ -75,6 +75,7 @@ return require('packer').startup(function(use)
   -- use('tweekmonster/django-plus.vim')
 
   use({ 'neoclide/coc.nvim', branch = 'release' })
+  use('Yggdroot/indentLine')
   -- use({ 'yaegassy/coc-htmldjango', run = 'yarn install --frozen-lockfile' })
 
 

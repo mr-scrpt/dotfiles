@@ -162,7 +162,7 @@ map . set hidden!
 map p paste
 map x cut
 map y copy
-map dd trash
+map dD trash
 map <enter> open
 map R reload
 map mf mkfile
@@ -181,4 +181,5 @@ map dg drag-and-drop
 
 map gd cd ~/Downloads
 map gp cd ~/project
+map gs cd ~/solutions
 map gc cd ~/.config
